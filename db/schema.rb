@@ -11,19 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329043806) do
+ActiveRecord::Schema.define(:version => 20130329075119) do
 
   create_table "foods", :force => true do |t|
     t.string   "name"
     t.integer  "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "available",  :default => false
   end
 
   create_table "reservations", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "price"
   end
 
   add_index "reservations", ["user_id"], :name => "index_reservations_on_user_id"
