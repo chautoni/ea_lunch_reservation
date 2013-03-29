@@ -1,16 +1,22 @@
 %h1 Listing reservations
 
-%table
+%table.table.table-bordered.table-hover
   %tr
     %th User
-    %th
+    %th Dishes
+    %th Backup dishes
+    %th Price
+    %th Updated at
     %th
     %th
 
   - @reservations.each do |reservation|
     %tr
-      %td= reservation.user
-      %td= link_to 'Show', reservation
+      %td= reservation.user.name
+      %td= reservation.dishes.map(&:name).join(', ')
+      %td= reservation.backup_dishes.map(&:name).join(', ')
+      %td= reservation.price
+      %td= reservation.updated_at.localtime.strftime '%b-%d-%H:%M'
       %td= link_to 'Edit', edit_reservation_path(reservation)
       %td= link_to 'Destroy', reservation, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
