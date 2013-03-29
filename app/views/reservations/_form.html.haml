@@ -1,0 +1,11 @@
+= simple_form_for(@reservation) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user, prompt: 'Select user'
+  .form-inputs
+    = dishes_selection_input(:dish, f)
+  .form-inputs
+    = dishes_selection_input(:backup_dish, f)
+  .form-actions
+    = f.button :submit
