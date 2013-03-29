@@ -45,5 +45,5 @@
 'THỊT BÒ XÀO BÔNG HẸ',
 'THỊT HEO XÀO ĐẬU CÔ QUE',
 'KHỔ QUA XÀO TRỨNG'].each do |name|
-  Food.find_or_create_by_name_and_price(name, 21000)
+  Food.find_or_create_by_name_and_price(name, 17000)
 end
