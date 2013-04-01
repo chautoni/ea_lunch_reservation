@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :user, prompt: 'Select user'
+    = user_selection_input(f)
   .form-inputs
     = dishes_selection_input(:dish, f)
   .form-inputs

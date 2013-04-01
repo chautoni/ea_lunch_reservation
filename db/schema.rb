@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329075119) do
+ActiveRecord::Schema.define(:version => 20130329085743) do
 
   create_table "foods", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(:version => 20130329075119) do
   end
 
   add_index "reservations_dishes", ["reservation_id", "dish_id"], :name => "by_dishes"
+
+  create_table "summaries", :force => true do |t|
+    t.string   "code"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "total_price"
+  end
+
+  add_index "summaries", ["code"], :name => "index_summaries_on_code"
 
   create_table "users", :force => true do |t|
     t.string   "name"

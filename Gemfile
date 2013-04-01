@@ -22,6 +22,7 @@ end
 
 group :development do
  gem 'debugger'
+ gem 'rack-mini-profiler'
  gem 'rspec-rails'
 end
 

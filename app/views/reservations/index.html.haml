@@ -9,7 +9,6 @@
     %th Updated at
     %th
     %th
-
   - @reservations.each do |reservation|
     %tr
       %td= reservation.user.name
@@ -19,7 +18,5 @@
       %td= reservation.updated_at.localtime.strftime '%b-%d-%H:%M'
       %td= link_to 'Edit', edit_reservation_path(reservation)
       %td= link_to 'Destroy', reservation, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
 %br
-
-= link_to 'New Reservation', new_reservation_path
+= button_to 'New Reservation', new_reservation_path, class: 'btn btn-primary', method: :get

@@ -1,23 +1,15 @@
 class ReservationsController < ApplicationController
+  before_filter :collect_foods, only: [:index, :new, :edit]
+  before_filter :collect_users, only: [:new, :edit]
+
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.joins(:user).order('users.name').includes(:dishes, :backup_dishes)
+    @reservations = Reservation.today.joins(:user).order('users.name').includes(:dishes, :backup_dishes)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @reservations }
-    end
-  end
-
-  # GET /reservations/1
-  # GET /reservations/1.json
-  def show
-    @reservation = Reservation.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @reservation }
     end
   end
 
@@ -44,7 +36,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        format.html { redirect_to reservations_path, notice: 'Reservation was successfully created.' }
         format.json { render json: @reservation, status: :created, location: @reservation }
       else
         format.html { render action: "new" }
@@ -60,7 +52,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.update_attributes(params[:reservation])
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
+        format.html { redirect_to reservations_path, notice: 'Reservation was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,5 +71,14 @@ class ReservationsController < ApplicationController
       format.html { redirect_to reservations_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def collect_foods
+    @foods = Food.order('name').select('name, id')
+  end
+
+  def collect_users
+    @users = User.not_reserved.order('name')
   end
 end

@@ -1,0 +1,11 @@
+%h1 Summary for #{@summary.code}
+%table.table.table-bordered.table-hover
+  %tr
+    %th Name
+    %th Count
+  - @summary.content.split('|').each do |content|
+    - parts = content.split(':')
+    %tr
+      %td= parts[0]
+      %td= parts[1]
+%h2 Total price: #{@summary.total_price}

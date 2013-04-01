@@ -4,6 +4,9 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+AddAvailableToFoods	db/migrate/20130329074344_add_available_to_foods.rb	/^class AddAvailableToFoods < ActiveRecord::Migration$/;"	c
+AddPriceToReservations	db/migrate/20130329075119_add_price_to_reservations.rb	/^class AddPriceToReservations < ActiveRecord::Migration$/;"	c
+AddTotalPriceToSummaries	db/migrate/20130329085743_add_total_price_to_summaries.rb	/^class AddTotalPriceToSummaries < ActiveRecord::Migration$/;"	c
 Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:EaLunchReservation
 ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
 ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
@@ -11,7 +14,9 @@ CreateFoods	db/migrate/20130329043624_create_foods.rb	/^class CreateFoods < Acti
 CreateReservations	db/migrate/20130329043703_create_reservations.rb	/^class CreateReservations < ActiveRecord::Migration$/;"	c
 CreateReservationsBackupDishes	db/migrate/20130329043801_create_reservations_backup_dishes.rb	/^class CreateReservationsBackupDishes < ActiveRecord::Migration$/;"	c
 CreateReservationsDishes	db/migrate/20130329043806_create_reservations_dishes.rb	/^class CreateReservationsDishes < ActiveRecord::Migration$/;"	c
+CreateSummaries	db/migrate/20130329084856_create_summaries.rb	/^class CreateSummaries < ActiveRecord::Migration$/;"	c
 CreateUsers	db/migrate/20130329043544_create_users.rb	/^class CreateUsers < ActiveRecord::Migration$/;"	c
+CustomPlan	custom_plan.rb	/^class CustomPlan < Zeus::Rails$/;"	c
 EaLunchReservation	config/application.rb	/^module EaLunchReservation$/;"	m
 Food	app/models/food.rb	/^class Food < ActiveRecord::Base$/;"	c
 FoodsController	app/controllers/foods_controller.rb	/^class FoodsController < ApplicationController$/;"	c
@@ -19,38 +24,47 @@ FoodsHelper	app/helpers/foods_helper.rb	/^module FoodsHelper$/;"	m
 Reservation	app/models/reservation.rb	/^class Reservation < ActiveRecord::Base$/;"	c
 ReservationsController	app/controllers/reservations_controller.rb	/^class ReservationsController < ApplicationController$/;"	c
 ReservationsHelper	app/helpers/reservations_helper.rb	/^module ReservationsHelper$/;"	m
+SummariesController	app/controllers/summaries_controller.rb	/^class SummariesController < ApplicationController$/;"	c
+Summary	app/models/summary.rb	/^class Summary < ActiveRecord::Base$/;"	c
 User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
 UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
 UsersHelper	app/helpers/users_helper.rb	/^module UsersHelper$/;"	m
-about	public/index.html	/^      function about() {$/;"	f
 change	db/migrate/20130329043544_create_users.rb	/^  def change$/;"	f	class:CreateUsers
 change	db/migrate/20130329043624_create_foods.rb	/^  def change$/;"	f	class:CreateFoods
 change	db/migrate/20130329043703_create_reservations.rb	/^  def change$/;"	f	class:CreateReservations
+change	db/migrate/20130329043801_create_reservations_backup_dishes.rb	/^  def change$/;"	f	class:CreateReservationsBackupDishes
+change	db/migrate/20130329074344_add_available_to_foods.rb	/^  def change$/;"	f	class:AddAvailableToFoods
+change	db/migrate/20130329075119_add_price_to_reservations.rb	/^  def change$/;"	f	class:AddPriceToReservations
+change	db/migrate/20130329084856_create_summaries.rb	/^  def change$/;"	f	class:CreateSummaries
+change	db/migrate/20130329085743_add_total_price_to_summaries.rb	/^  def change$/;"	f	class:AddTotalPriceToSummaries
 create	app/controllers/foods_controller.rb	/^  def create$/;"	f	class:FoodsController
 create	app/controllers/reservations_controller.rb	/^  def create$/;"	f	class:ReservationsController
 create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
 destroy	app/controllers/foods_controller.rb	/^  def destroy$/;"	f	class:FoodsController
 destroy	app/controllers/reservations_controller.rb	/^  def destroy$/;"	f	class:ReservationsController
 destroy	app/controllers/users_controller.rb	/^  def destroy$/;"	f	class:UsersController
-down	db/migrate/20130329043801_create_reservations_backup_dishes.rb	/^  def down$/;"	f	class:CreateReservationsBackupDishes
-down	db/migrate/20130329043806_create_reservations_dishes.rb	/^  def down$/;"	f	class:CreateReservationsDishes
+dishes_selection_input	app/helpers/reservations_helper.rb	/^  def dishes_selection_input(type, builder)$/;"	f	class:ReservationsHelper
 edit	app/controllers/foods_controller.rb	/^  def edit$/;"	f	class:FoodsController
 edit	app/controllers/reservations_controller.rb	/^  def edit$/;"	f	class:ReservationsController
 edit	app/controllers/users_controller.rb	/^  def edit$/;"	f	class:UsersController
+eligibility_to_reserve	app/models/reservation.rb	/^  def eligibility_to_reserve$/;"	f	class:Reservation
 index	app/controllers/foods_controller.rb	/^  def index$/;"	f	class:FoodsController
 index	app/controllers/reservations_controller.rb	/^  def index$/;"	f	class:ReservationsController
 index	app/controllers/users_controller.rb	/^  def index$/;"	f	class:UsersController
 new	app/controllers/foods_controller.rb	/^  def new$/;"	f	class:FoodsController
 new	app/controllers/reservations_controller.rb	/^  def new$/;"	f	class:ReservationsController
 new	app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
+set_price	app/models/reservation.rb	/^  def set_price$/;"	f	class:Reservation
 show	app/controllers/foods_controller.rb	/^  def show$/;"	f	class:FoodsController
 show	app/controllers/reservations_controller.rb	/^  def show$/;"	f	class:ReservationsController
 show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
-up	db/migrate/20130329043801_create_reservations_backup_dishes.rb	/^  def up$/;"	f	class:CreateReservationsBackupDishes
+today	app/controllers/summaries_controller.rb	/^  def today$/;"	f	class:SummariesController
 up	db/migrate/20130329043806_create_reservations_dishes.rb	/^  def up$/;"	f	class:CreateReservationsDishes
 update	app/controllers/foods_controller.rb	/^  def update$/;"	f	class:FoodsController
 update	app/controllers/reservations_controller.rb	/^  def update$/;"	f	class:ReservationsController
 update	app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersController
+update_today_summary	app/models/reservation.rb	/^  def update_today_summary$/;"	f	class:Reservation
+update_today_summary	app/models/summary.rb	/^  def self.update_today_summary$/;"	F	class:Summary
 valid_attributes	spec/controllers/foods_controller_spec.rb	/^  def valid_attributes$/;"	f
 valid_attributes	spec/controllers/reservations_controller_spec.rb	/^  def valid_attributes$/;"	f
 valid_attributes	spec/controllers/users_controller_spec.rb	/^  def valid_attributes$/;"	f
