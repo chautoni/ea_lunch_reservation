@@ -84,16 +84,16 @@ end
 end
 
 {
-  'CÁ RÔ KHO TỘ': 26,
-  'CÁ DIÊU HỒNG KHO TỘ': 26,
-  'CÁ HÚ KHO TỘ', 31,
-  'THỊT BA CHỈ KHO TỘ': 26,
-  'ĐẦU CÁ LÓC KHO TỘ', 42,
-  'CANH CHUA ĐẦU CÁ LÓC', 42,
-  'CANH CHUA ĐẦU CÁ HÚ', 40,
-  'CANH CHUA ĐẦU CÁ DIÊU HỒNG': 31,
-  'CANH CHUA KHÔNG CÁ': 8,
-  'ĐÙI GÀ RÔ TI': 27
+  'CÁ RÔ KHO TỘ' => 26,
+  'CÁ DIÊU HỒNG KHO TỘ' => 26,
+  'CÁ HÚ KHO TỘ' => 31,
+  'THỊT BA CHỈ KHO TỘ' => 26,
+  'ĐẦU CÁ LÓC KHO TỘ' => 42,
+  'CANH CHUA ĐẦU CÁ LÓC' => 42,
+  'CANH CHUA ĐẦU CÁ HÚ' => 40,
+  'CANH CHUA ĐẦU CÁ DIÊU HỒNG' => 31,
+  'CANH CHUA KHÔNG CÁ' => 8,
+  'ĐÙI GÀ RÔ TI' => 27
 }.each do |name, price|
   Food.find_or_create_by_name_and_price(name, price * 1000)
 end
