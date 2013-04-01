@@ -33,7 +33,9 @@
   'Thien Lam',
   'Duc Trinh',
   'Ngoc Truong',
-  'Hanh Pho'
+  'Hanh Pho',
+  'Thu Nguyen',
+  'Vy Bui'
 ].each do |name|
   User.find_or_create_by_name(name)
 end
