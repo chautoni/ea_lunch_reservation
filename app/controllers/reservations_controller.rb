@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_filter :collect_foods, only: [:index, :new, :edit]
+  before_filter :collect_foods, only: [:index, :new, :edit, :create]
   before_filter :collect_users, only: [:new, :edit]
 
   # GET /reservations
@@ -27,6 +27,7 @@ class ReservationsController < ApplicationController
   # GET /reservations/1/edit
   def edit
     @reservation = Reservation.find(params[:id])
+    @users += [@reservation.user] if @reservation
   end
 
   # POST /reservations
