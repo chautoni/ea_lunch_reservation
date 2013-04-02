@@ -1,6 +1,6 @@
 class Reservation < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :user_id, :backup_dish_ids, :dish_ids, :comment
+  attr_accessible :user_id, :backup_dish_ids, :dish_ids, :comment, :food_only
 
   has_and_belongs_to_many :backup_dishes, association_foreign_key: :backup_dish_id, join_table: 'reservations_backup_dishes', class_name: Food
   has_and_belongs_to_many :dishes, association_foreign_key: :dish_id, join_table: 'reservations_dishes', class_name: Food
@@ -13,6 +13,7 @@ class Reservation < ActiveRecord::Base
   after_destroy :update_today_summary
 
   scope :today, where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  scope :food_only, where(food_only: true)
 
   BASIC_PRICE = 4000
 

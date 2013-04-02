@@ -28,6 +28,9 @@
             %ul.nav
               %li= link_to 'Reservations', reservations_path
               %li= link_to 'Today Summary', today_summaries_path
+              - event = Event.last
+              - if event
+                %li= link_to "#{event.content} - #{event.created_at.in_time_zone.strftime('%k:%M %d/%m/%Y')}", '#'
     .container-fluid
       .row-fluid
         .span3

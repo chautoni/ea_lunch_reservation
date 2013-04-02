@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130402001149) do
+ActiveRecord::Schema.define(:version => 20130402154721) do
+
+  create_table "events", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "foods", :force => true do |t|
     t.string   "name"
@@ -23,10 +29,11 @@ ActiveRecord::Schema.define(:version => 20130402001149) do
 
   create_table "reservations", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "price"
     t.string   "comment"
+    t.boolean  "food_only",  :default => false
   end
 
   add_index "reservations", ["user_id"], :name => "index_reservations_on_user_id"
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130402001149) do
     t.datetime "updated_at",        :null => false
     t.integer  "total_price"
     t.integer  "total_reservation"
+    t.integer  "total_food_only"
   end
 
   add_index "summaries", ["code"], :name => "index_summaries_on_code"

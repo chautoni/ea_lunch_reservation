@@ -8,6 +8,7 @@
     %th Price
     %th Updated at
     %th Comment
+    %th Food only?
     %th
     %th
   - @reservations.each do |reservation|
@@ -18,6 +19,7 @@
       %td= reservation.price
       %td= reservation.updated_at.in_time_zone.strftime '%b-%d-%H:%M'
       %td= reservation.comment
+      %td= reservation.food_only
       %td= link_to 'Edit', edit_reservation_path(reservation)
       %td= link_to 'Destroy', reservation, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br

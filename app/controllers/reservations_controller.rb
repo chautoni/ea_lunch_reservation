@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
-  before_filter :collect_foods, only: [:index, :new, :edit, :create]
+  before_filter :collect_foods, only: [:index, :new, :edit, :create, :update]
   before_filter :collect_users, only: [:new, :edit]
+  before_filter :normalize_params, only: [:create]
 
   # GET /reservations
   # GET /reservations.json
@@ -76,10 +77,14 @@ class ReservationsController < ApplicationController
 
   private
   def collect_foods
-    @foods = Food.order('name').select('name, id')
+    @foods = Food.available.order('name').select('name, id')
   end
 
   def collect_users
     @users = User.not_reserved.order('name')
+  end
+
+  def normalize_params
+    params[:reservation][:comment] = params[:reservation][:comment][0..199] if params[:reservation][:comment].present?
   end
 end
