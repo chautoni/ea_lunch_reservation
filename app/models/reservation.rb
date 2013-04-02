@@ -1,10 +1,11 @@
 class Reservation < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :user_id, :backup_dish_ids, :dish_ids
+  attr_accessible :user_id, :backup_dish_ids, :dish_ids, :comment
 
   has_and_belongs_to_many :backup_dishes, association_foreign_key: :backup_dish_id, join_table: 'reservations_backup_dishes', class_name: Food
   has_and_belongs_to_many :dishes, association_foreign_key: :dish_id, join_table: 'reservations_dishes', class_name: Food
   validates :user_id, :dish_ids, presence: true
+  validates_length_of :comment, maximum: 200, allow_blank: true
   validate :eligibility_to_reserve, on: :create
 
   before_save :set_price

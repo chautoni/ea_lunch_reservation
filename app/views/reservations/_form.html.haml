@@ -7,5 +7,7 @@
     = dishes_selection_input(:dish, f)
   .form-inputs
     = dishes_selection_input(:backup_dish, f)
+  .form-inputs
+    = f.input :comment, as: :text
   .form-actions
     = f.button :submit

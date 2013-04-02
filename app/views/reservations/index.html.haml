@@ -7,6 +7,7 @@
     %th Backup dishes
     %th Price
     %th Updated at
+    %th Comment
     %th
     %th
   - @reservations.each do |reservation|
@@ -16,6 +17,7 @@
       %td= reservation.backup_dishes.map(&:name).join(', ')
       %td= reservation.price
       %td= reservation.updated_at.in_time_zone.strftime '%b-%d-%H:%M'
+      %td= reservation.comment
       %td= link_to 'Edit', edit_reservation_path(reservation)
       %td= link_to 'Destroy', reservation, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br

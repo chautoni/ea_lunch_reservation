@@ -1,0 +1,8 @@
+%table.table.table-bordered.table-hover
+  %tr
+    %th Name
+    %th Count
+  - summaries.each do |summary|
+    %tr
+      %td= summary.name
+      %td= summary.count
