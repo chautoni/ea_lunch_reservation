@@ -7,6 +7,7 @@ gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'thin'
 gem 'chosen-rails'
+gem 'mechanize', :require => false
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
