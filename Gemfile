@@ -6,7 +6,6 @@ gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'thin'
-gem 'chosen-rails'
 gem 'mechanize', :require => false
 
 group :assets do
@@ -19,6 +18,7 @@ gem 'jquery-rails'
 
 group :production do
   gem 'unicorn'
+  gem 'newrelic_rpm'
 end
 
 group :development do
