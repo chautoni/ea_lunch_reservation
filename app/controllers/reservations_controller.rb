@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_filter :collect_foods, only: [:index, :new, :edit, :create, :update]
-  before_filter :collect_users, only: [:new, :edit]
+  before_filter :collect_users, only: [:new, :edit, :create]
   before_filter :normalize_params, only: [:create]
 
   # GET /reservations
