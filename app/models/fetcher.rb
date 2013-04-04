@@ -3,8 +3,8 @@ require 'mechanize'
 class Fetcher
   def self.update_food_data
     @agent ||= Mechanize.new
-    Food.update_all(available: false)
     @agent.get('http://www.comhanhthu.com/index.php?ht=cms&idcms=2')
+    Food.update_all(available: false)
     (@agent.page.parser.css('ol li span strong span').map(&:text) +  @agent.page.parser.css('ol li i').map(&:text)).uniq.each do |text|
       next if text.length < 5
       if text.index('=')
