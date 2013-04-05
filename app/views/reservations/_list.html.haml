@@ -1,0 +1,18 @@
+%table.table.table-bordered.table-hover
+  %tr
+    %th User
+    %th Dishes
+    %th Backup dishes
+    %th Price
+    %th Updated at
+    %th Comment
+    %th Food only?
+  - @reservations.each do |reservation|
+    %tr
+      %td= reservation.user.name
+      %td= reservation.dishes.map(&:name).join(', ')
+      %td= reservation.backup_dishes.map(&:name).join(', ')
+      %td= reservation.price
+      %td= reservation.updated_at.in_time_zone.strftime '%b-%d-%H:%M'
+      %td= reservation.comment
+      %td= reservation.food_only

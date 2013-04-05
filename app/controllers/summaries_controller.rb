@@ -7,6 +7,7 @@ class SummariesController < ApplicationController
       redirect_to reservations_path, notice: 'There is no reservation for today yet!'
       return
     end
+    @reservations = Reservation.today.joins(:user).order('users.name').includes(:dishes, :backup_dishes)
   end
 
   private
