@@ -14,6 +14,7 @@ class Summary < ActiveRecord::Base
     summary.total_price = Reservation.today.sum(:price)
     summary.total_reservation = Reservation.today.count
     summary.total_food_only = Reservation.today.food_only.count
+    summary.total_foods = Reservation.today.joins(:dishes).select('count(foods.id)').first.count
     summary.save
   end
 end
