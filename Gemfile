@@ -21,10 +21,11 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-group :development do
+group :development, :test do
  gem 'debugger'
  gem 'rack-mini-profiler'
  gem 'rspec-rails'
+ gem 'spring'
 end
 
 group :test do
