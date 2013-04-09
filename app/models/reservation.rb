@@ -19,7 +19,8 @@ class Reservation < ActiveRecord::Base
 
   private
   def set_price
-    self.price = BASIC_PRICE + dishes.map(&:price).sum unless dish_ids.empty?
+    self.price = dishes.map(&:price).sum unless dish_ids.empty?
+    self.price += BASIC_PRICE unless food_only?
   end
 
   def eligibility_to_reserve
