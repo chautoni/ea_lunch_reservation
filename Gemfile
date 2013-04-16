@@ -30,6 +30,11 @@ end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'poltergeist'
+  gem 'rspec-http'
+  gem 'shoulda-matchers'
 end
 
 ruby '2.0.0'
