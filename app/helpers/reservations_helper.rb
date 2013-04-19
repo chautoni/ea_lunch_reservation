@@ -4,6 +4,6 @@ module ReservationsHelper
   end
 
   def user_selection_input(builder, reservation)
-    builder.input(:user_id, label_method: :name, value_method: :id, collection: @users, label: 'User', prompt: 'Select user', selected: reservation.user_id, input_html: { class: 'chzn-select span3' })
+    builder.input(:user_id, label_method: :name, value_method: :id, collection: @users, label: 'User', prompt: 'Select user', selected: session[:last_user] || reservation.user_id, input_html: { class: 'chzn-select span3' })
   end
 end

@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.today.joins(:user).order('users.name').includes(:dishes, :backup_dishes)
+    @reservations = Reservation.today.joins(:user).order('users.name').includes(:dishes, :backup_dishes).order('created_at')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,6 +38,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
+        session[:last_user] = @reservation.user_id
         format.html { redirect_to reservations_path, notice: 'Reservation was successfully created.' }
         format.json { render json: @reservation, status: :created, location: @reservation }
       else
