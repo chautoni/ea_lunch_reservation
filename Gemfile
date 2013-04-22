@@ -17,7 +17,7 @@ end
 gem 'jquery-rails'
 
 group :production do
-  gem 'unicorn'
+  gem 'puma'
   gem 'newrelic_rpm'
 end
 
