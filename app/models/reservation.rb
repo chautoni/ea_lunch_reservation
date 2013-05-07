@@ -6,7 +6,8 @@ class Reservation < ActiveRecord::Base
   has_and_belongs_to_many :dishes, association_foreign_key: :dish_id, join_table: 'reservations_dishes', class_name: Food
   validates :user_id, :dish_ids, presence: true
   validates_length_of :comment, maximum: 200, allow_blank: true
-  validate :eligibility_to_reserve, on: [:create, :update]
+  validate :eligibility_to_reserve, on: :create
+  validate :eligibility_to_reserve, on: :update
 
   before_save :set_price
   after_save :update_today_summary
