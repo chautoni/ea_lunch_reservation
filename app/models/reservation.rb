@@ -6,16 +6,19 @@ class Reservation < ActiveRecord::Base
   has_and_belongs_to_many :dishes, association_foreign_key: :dish_id, join_table: 'reservations_dishes', class_name: Food
   validates :user_id, :dish_ids, presence: true
   validates_length_of :comment, maximum: 200, allow_blank: true
-  validate :eligibility_to_reserve, on: :create
+  validate :eligibility_to_reserve, on: [:create, :update]
 
   before_save :set_price
   after_save :update_today_summary
   after_destroy :update_today_summary
 
-  scope :today, where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   scope :food_only, where(food_only: true)
 
   BASIC_PRICE = 4000
+
+  def self.today
+    where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  end
 
   private
   def set_price
