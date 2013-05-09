@@ -7,9 +7,9 @@ class Reservation < ActiveRecord::Base
   validates :user_id, :dish_ids, presence: true
   validates_length_of :comment, maximum: 200, allow_blank: true
   validate :eligibility_to_reserve, on: :create
-  validate :eligibility_to_reserve, on: :update
 
   before_save :set_price
+  before_update :eligibility_to_update_reservation
   after_save :update_today_summary
   after_destroy :update_today_summary
 
@@ -30,10 +30,11 @@ class Reservation < ActiveRecord::Base
   def eligibility_to_reserve
     if Reservation.today.exists?(user_id: user_id)
       self.errors[:user_id] << 'You already reserved for today. Please come back by tomorrow!'
-      false
-    else
-      true
     end
+  end
+
+  def eligibility_to_update_reservation
+    eligibility_to_reserve if user_id_changed?
   end
 
   def update_today_summary

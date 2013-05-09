@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
   before_filter :collect_foods, only: [:index, :new, :edit, :create, :update]
   before_filter :collect_users, only: [:new, :edit, :create]
   before_filter :normalize_params, only: [:create]
+  before_filter :preload_reservation, only: [:edit, :update]
 
   # GET /reservations
   # GET /reservations.json
@@ -27,8 +28,6 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1/edit
   def edit
-    @reservation = Reservation.find(params[:id])
-    @users += [@reservation.user] if @reservation
   end
 
   # POST /reservations
@@ -51,8 +50,6 @@ class ReservationsController < ApplicationController
   # PUT /reservations/1
   # PUT /reservations/1.json
   def update
-    @reservation = Reservation.find(params[:id])
-
     respond_to do |format|
       if @reservation.update_attributes(params[:reservation])
         format.html { redirect_to reservations_path, notice: 'Reservation was successfully updated.' }
@@ -83,6 +80,11 @@ class ReservationsController < ApplicationController
 
   def collect_users
     @users = User.not_reserved.order('name')
+  end
+
+  def preload_reservation
+    @reservation = Reservation.find(params[:id])
+    @users += [@reservation.user]
   end
 
   def normalize_params
