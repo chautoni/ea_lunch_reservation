@@ -41,6 +41,12 @@
               - @foods.pluck(:name).each do |name|
                 %li= name
         .span9
+          - if controller_name == Reservation.table_name
+            - if Time.zone.now > Reservation.deadline
+              %h4 Reservation deadline (11:40AM) has been reached!
+            - else
+              %h1#countdown_timer{ style: 'height: 100px; padding-top: 15px; color: red;' }
+          %br
           = bootstrap_flash
           = yield
       %footer
@@ -53,3 +59,7 @@
     :javascript
       $(".chzn-select").chosen();
       $('#tabs').tab();
+      if ($('#countdown_timer').length > 0){
+        var deadline = new Date("#{Reservation.deadline.strftime('%B %e, %Y %H:%M:00')}")
+        $('#countdown_timer').countdown({until: deadline, format: 'HMS'});
+      }

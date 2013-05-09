@@ -16,9 +16,14 @@ class Reservation < ActiveRecord::Base
   scope :food_only, where(food_only: true)
 
   BASIC_PRICE = 4000
+  DEADLINE = 11.hour + 40.minute
 
   def self.today
     where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  end
+
+  def self.deadline
+    Time.zone.now.beginning_of_day + DEADLINE
   end
 
   private
@@ -30,6 +35,8 @@ class Reservation < ActiveRecord::Base
   def eligibility_to_reserve
     if Reservation.today.exists?(user_id: user_id)
       self.errors[:user_id] << 'You already reserved for today. Please come back by tomorrow!'
+    elsif Time.zone.now > Reservation.deadline
+      self.errors[:user_id] << 'You cannot make reservation after deadline'
     end
   end
 

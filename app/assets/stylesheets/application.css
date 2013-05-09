@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require chosen.jquery
+ *= require jquery.countdown
  *= require_tree .
  */

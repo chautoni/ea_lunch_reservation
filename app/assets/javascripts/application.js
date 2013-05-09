@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require chosen.jquery
+//= require jquery.countdown
 //= require_tree .
