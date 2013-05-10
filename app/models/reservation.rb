@@ -16,7 +16,7 @@ class Reservation < ActiveRecord::Base
   scope :food_only, where(food_only: true)
 
   BASIC_PRICE = 4000
-  DEADLINE = 11.hour + 40.minute
+  DEADLINE = 12.hour + 40.minute
 
   def self.today
     where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
