@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_filter :collect_foods, only: [:index, :new, :edit, :create, :update]
-  before_filter :collect_users, only: [:new, :edit, :create]
+  before_filter :collect_users, only: [:new, :edit, :create, :update]
   before_filter :normalize_params, only: [:create]
   before_filter :preload_reservation, only: [:edit, :update]
 
@@ -84,7 +84,7 @@ class ReservationsController < ApplicationController
 
   def preload_reservation
     @reservation = Reservation.find(params[:id])
-    @users += [@reservation.user]
+    @users += [@reservation.user] if @users
   end
 
   def normalize_params
