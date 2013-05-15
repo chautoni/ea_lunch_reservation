@@ -5,7 +5,7 @@ class Fetcher
     @agent ||= Mechanize.new
     @agent.get('http://www.comhanhthu.com/index.php?ht=cms&idcms=2')
     Food.update_all(available: false)
-    (@agent.page.parser.css('ol li h2 strong span').map(&:text) +  @agent.page.parser.css('ol li i').map(&:text)).uniq.each do |text|
+    (@agent.page.parser.css('ol li h2').map { |e| e.text.strip } +  @agent.page.parser.css('ol li i').map { |e| e.text.strip }).uniq.each do |text|
       next if text.length < 5
       if text.index('=')
         name, price = text.split('=').map(&:strip)
