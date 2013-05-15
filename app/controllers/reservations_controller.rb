@@ -3,6 +3,7 @@ class ReservationsController < ApplicationController
   before_filter :collect_users, only: [:new, :edit, :create, :update]
   before_filter :normalize_params, only: [:create]
   before_filter :preload_reservation, only: [:edit, :update]
+  before_filter :find_reservation, only: [:backup_availability]
 
   # GET /reservations
   # GET /reservations.json
@@ -73,6 +74,16 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def backup_availability
+    respond_to do |format|
+      if @reservation.update_column(:use_backup, params[:reservation][:use_backup])
+        format.json { head :no_content }
+      else
+        format.json { render json: @reservation.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
   def collect_foods
     @foods = Food.available.order('name').select('name, id')
@@ -83,8 +94,12 @@ class ReservationsController < ApplicationController
   end
 
   def preload_reservation
-    @reservation = Reservation.find(params[:id])
+    find_reservation
     @users += [@reservation.user] if @users
+  end
+
+  def find_reservation
+    @reservation = Reservation.find(params[:id])
   end
 
   def normalize_params

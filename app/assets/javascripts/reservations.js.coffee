@@ -4,3 +4,14 @@
 $('.chzn-select').chosen
   allow_single_deselect: true
   no_results_text: 'No results matched'
+
+$('#reservation_use_backup').on 'click', ->
+  form = $(@).parent('form')
+  $.ajax
+    type: form.attr('method')
+    url: form.attr('action')
+    data: form.serialize(),
+    dataType: "json",
+    error:(data) ->
+      alert 'Error updating reservation status'
+    success: (data) ->

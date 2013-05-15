@@ -5,6 +5,7 @@
     %th User
     %th Dishes
     %th Backup dishes
+    %th Backup in use?
     %th Price
     %th Updated at
     %th Comment
@@ -16,6 +17,9 @@
       %td= reservation.user.name
       %td= reservation.dishes.map(&:name).join(', ')
       %td= reservation.backup_dishes.map(&:name).join(', ')
+      %td
+        = form_for reservation, remote: true, url: backup_availability_reservation_path(reservation)  do |f|
+          = f.check_box :use_backup
       %td= reservation.price
       %td= reservation.updated_at.in_time_zone.strftime '%b-%d-%H:%M'
       %td= reservation.comment

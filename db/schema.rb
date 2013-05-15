@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405031926) do
+ActiveRecord::Schema.define(:version => 20130515073715) do
+
+  create_table "announcements", :force => true do |t|
+    t.string   "message"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.string   "content"
@@ -34,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130405031926) do
     t.integer  "price"
     t.string   "comment"
     t.boolean  "food_only",  :default => false
+    t.boolean  "use_backup", :default => false
   end
 
   add_index "reservations", ["user_id"], :name => "index_reservations_on_user_id"
