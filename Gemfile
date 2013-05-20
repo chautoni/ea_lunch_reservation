@@ -5,7 +5,6 @@ gem 'pg'
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
-gem 'thin'
 gem 'mechanize', :require => false
 
 group :assets do
@@ -19,6 +18,10 @@ gem 'jquery-rails'
 
 group :production do
   gem 'puma'
+end
+
+group :development do
+  gem 'thin'
 end
 
 group :development, :test do
