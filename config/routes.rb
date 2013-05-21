@@ -10,5 +10,6 @@ EaLunchReservation::Application.routes.draw do
   resources :users, only: []
   resource :summaries, only: [] do
     get :today
+    get :query
   end
 end

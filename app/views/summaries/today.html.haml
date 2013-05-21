@@ -12,3 +12,6 @@
     %h2 Total foods: #{@summary.total_foods}
     %h2 Food-only: #{@summary.total_food_only}
     %h2 Total price: #{@summary.total_price}
+    %h2 Caller: #{@summary.caller.try(:name) || 'N/A'}
+    - if Time.zone.now > Reservation.deadline && !@summary.caller.present?
+      %h2= link_to 'Query caller now!', query_summaries_path

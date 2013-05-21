@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515073715) do
+ActiveRecord::Schema.define(:version => 20130515112357) do
 
   create_table "announcements", :force => true do |t|
     t.string   "message"
@@ -70,8 +70,10 @@ ActiveRecord::Schema.define(:version => 20130515073715) do
     t.integer  "total_reservation"
     t.integer  "total_food_only"
     t.integer  "total_foods"
+    t.integer  "caller_id"
   end
 
+  add_index "summaries", ["caller_id"], :name => "index_summaries_on_caller_id"
   add_index "summaries", ["code"], :name => "index_summaries_on_code"
 
   create_table "users", :force => true do |t|
