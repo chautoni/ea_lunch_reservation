@@ -17,6 +17,7 @@ end
 gem 'jquery-rails'
 
 group :production do
+  gem 'newrelic_rpm'
   gem 'puma'
 end
 

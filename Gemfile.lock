@@ -106,6 +106,7 @@ GEM
     multi_json (1.7.3)
     net-http-digest_auth (1.3)
     net-http-persistent (2.8)
+    newrelic_rpm (3.6.2.96)
     nokogiri (1.5.9)
     ntlm-http (0.1.1)
     open4 (1.3.0)
@@ -215,6 +216,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   mechanize
+  newrelic_rpm
   pg
   poltergeist
   puma
