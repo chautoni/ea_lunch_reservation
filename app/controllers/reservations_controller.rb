@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.today.joins(:user).order('users.name').includes(:dishes, :backup_dishes).order('created_at')
+    @reservations = Reservation.today.joins(:user).includes(:dishes, :backup_dishes).order('reservations.created_at')
 
     respond_to do |format|
       format.html # index.html.erb
