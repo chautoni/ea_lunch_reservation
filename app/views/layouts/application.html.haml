@@ -32,6 +32,7 @@
               - event = Event.last
               - if event
                 %li= link_to "#{event.content} - #{event.created_at.in_time_zone.strftime('%k:%M %d/%m/%Y')}", '#'
+              %li= link_to 'HanhThu - 3.5089063 - 3.6018457 - 0985807833', 'http://www.comhanhthu.com/'
     .container-fluid
       .row-fluid
         .span3
@@ -51,7 +52,6 @@
           = yield
       %footer
         %p &copy; Thach Chau 2013
-        %h4 HanhThu - 3.5089063 - 3.6018457 - 0985807833
     /
       Javascripts
       \==================================================
